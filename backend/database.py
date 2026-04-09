@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-# For debugging:
-print(f"DEBUG: DATABASE_URL is '{DATABASE_URL}'")
 
 if not DATABASE_URL:
     DATABASE_URL = "postgresql://postgres:password@localhost:5432/ai_job_analyzer"
@@ -16,7 +14,6 @@ if not DATABASE_URL:
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
-
 
 def get_db():
     db = SessionLocal()

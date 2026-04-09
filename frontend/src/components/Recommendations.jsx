@@ -54,8 +54,6 @@ const ICON_KEYS = ['arrow', 'star', 'book', 'zap', 'target', 'trending', 'layers
 export default function Recommendations({ recommendations, skills }) {
   return (
     <div className="flex flex-col gap-8">
-
-      {/* ── Career Recommendations ── */}
       <div>
         <div className="flex items-center gap-3 mb-5">
           <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-indigo-400">
@@ -85,7 +83,6 @@ export default function Recommendations({ recommendations, skills }) {
         </ol>
       </div>
 
-      {/* ── Skills to Learn ── */}
       <div>
         <div className="flex items-center gap-3 mb-5">
           <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-emerald-400">

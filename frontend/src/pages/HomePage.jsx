@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 const EXAMPLE_JOBS = [
   {
@@ -86,12 +86,10 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // ── Task helpers ──────────────────────────────────────────────────────────
   const addTask = () => { if (tasks.length < 15) setTasks([...tasks, '']) }
   const removeTask = (idx) => { if (tasks.length > 1) setTasks(tasks.filter((_, i) => i !== idx)) }
   const updateTask = (idx, value) => { const u = [...tasks]; u[idx] = value; setTasks(u) }
 
-  // ── Tool tag helpers ───────────────────────────────────────────────────────
   const addTool = () => {
     const trimmed = toolInput.trim()
     if (trimmed && !toolsUsed.includes(trimmed) && toolsUsed.length < 15) {
@@ -102,7 +100,6 @@ export default function HomePage() {
   const removeTool = (tool) => setToolsUsed(toolsUsed.filter(t => t !== tool))
   const handleToolKeyDown = (e) => { if (e.key === 'Enter') { e.preventDefault(); addTool() } }
 
-  // ── Example loader ─────────────────────────────────────────────────────────
   const loadExample = (ex) => {
     setJobTitle(ex.title)
     setTasks(ex.tasks)
@@ -112,7 +109,6 @@ export default function HomePage() {
     setError('')
   }
 
-  // ── Submit ─────────────────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -122,7 +118,7 @@ export default function HomePage() {
 
     setLoading(true)
     try {
-      const res = await axios.post('/api/analyze-job', {
+      const res = await api.post('/api/analyze-job', {
         job_title: jobTitle.trim(),
         tasks: validTasks,
         experience_level: experienceLevel,
@@ -140,8 +136,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
-
-      {/* ── Hero ── */}
       <section className="pt-20 pb-12 px-6 text-center">
         <div className="max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-slate-400 text-xs font-medium mb-8">
@@ -159,10 +153,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Form container ── */}
       <div className="max-w-2xl mx-auto px-6 pb-24">
-
-        {/* Example presets */}
         <div className="mb-6">
           <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-600 mb-3">
             Try an example
@@ -213,10 +204,7 @@ export default function HomePage() {
             />
           </div>
 
-          {/* ── Row: Experience + Decision Making ── */}
           <div className="grid grid-cols-2 gap-4 mb-5">
-
-            {/* Experience Level */}
             <div>
               <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 Experience (years)
@@ -390,7 +378,6 @@ export default function HomePage() {
           </button>
         </form>
 
-        {/* ── How it works ── */}
         <div className="mt-16">
           <p className="section-label text-center">How it works</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 stagger">

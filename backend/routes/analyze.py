@@ -8,21 +8,9 @@ import json
 
 router = APIRouter()
 
-
 @router.post("/analyze-job", response_model=AnalyzeJobResponse)
 def analyze_job(request: AnalyzeJobRequest, db: Session = Depends(get_db)):
-    """
-    Analyze a job role for AI automation risk.
-
-    Steps:
-    1. Validate input (handled by Pydantic)
-    2. Send to AI engine for analysis
-    3. Apply rule-based scoring adjustments (experience, tools, decision-making)
-    4. Persist result to PostgreSQL
-    5. Return structured JSON response
-    """
     try:
-        # Step 2 & 3: AI analysis + rule adjustments (all new fields passed in)
         result = analyze_job_with_ai(
             job_title=request.job_title,
             tasks=request.tasks,
@@ -33,10 +21,8 @@ def analyze_job(request: AnalyzeJobRequest, db: Session = Depends(get_db)):
     except json.JSONDecodeError as e:
         raise HTTPException(status_code=502, detail=f"AI returned malformed JSON: {str(e)}")
     except Exception as e:
-        print(f"ERROR: {type(e).__name__}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"AI analysis failed: {type(e).__name__} - {str(e)}")
 
-    # Step 4: Persist to DB (including new columns)
     db_record = JobAnalysis(
         job_title=request.job_title,
         tasks=request.tasks,
@@ -56,7 +42,6 @@ def analyze_job(request: AnalyzeJobRequest, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_record)
 
-    # Step 5: Return response
     return AnalyzeJobResponse(
         id=db_record.id,
         job_title=db_record.job_title,

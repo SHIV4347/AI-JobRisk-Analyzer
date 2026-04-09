@@ -4,10 +4,10 @@ from sqlalchemy import text
 from database import engine, Base
 from routes.analyze import router as analyze_router
 
-# Create all tables on startup (new installs)
+# Initialize database tables
 Base.metadata.create_all(bind=engine)
 
-# ── Inline migration: safely add new columns if they don't exist ──────────────
+# Apply schema updates safely on startup
 _MIGRATIONS = [
     "ALTER TABLE job_analysis ADD COLUMN IF NOT EXISTS experience_level TEXT;",
     "ALTER TABLE job_analysis ADD COLUMN IF NOT EXISTS tools_used JSONB;",
@@ -19,10 +19,8 @@ try:
         for stmt in _MIGRATIONS:
             conn.execute(text(stmt))
         conn.commit()
-    print("✅ DB migration complete (new columns ready).")
-except Exception as _e:
-    print(f"⚠️  DB migration warning: {_e}")
-# ──────────────────────────────────────────────────────────────────────────────
+except Exception as e:
+    print(f"Database migration warning: {e}")
 
 app = FastAPI(
     title="AI Job Risk Analyzer",
@@ -30,10 +28,14 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS – allow frontend dev server
+import os
+
+# CORS Settings
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:3000,*").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -41,11 +43,9 @@ app.add_middleware(
 
 app.include_router(analyze_router, prefix="/api", tags=["Analysis"])
 
-
 @app.get("/", tags=["Health"])
 def root():
     return {"status": "ok", "message": "AI Job Risk Analyzer API is running."}
-
 
 @app.get("/health", tags=["Health"])
 def health():

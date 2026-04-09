@@ -7,19 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-# Setup Groq
 api_key = os.getenv("GROQ_API_KEY")
-client = None
+client = Groq(api_key=api_key) if api_key else None
 
-if api_key:
-    print(f"DEBUG: Groq API Key found (starts with {api_key[:7]}...)")
-    client = Groq(api_key=api_key)
-else:
-    print("DEBUG: Groq API Key NOT FOUND. App will use MOCK MODE.")
-
-# ---------------------------------------------------------------------------
-# Keyword-based task classifier (used as fallback + rule adjustment)
-# ---------------------------------------------------------------------------
+# Keyword-based task classifier for fallback and rule adjustments
 REPETITIVE_KEYWORDS = [
     "data entry", "filing", "scheduling", "copy", "paste", "invoicing",
     "processing", "sorting", "scanning", "monitoring", "tracking", "reporting",
@@ -116,34 +107,30 @@ def apply_rule_adjustments(
     total = len(task_categories)
     adjustment = 0
 
-    # ── 1. Experience adjustment ──────────────────────────────────────────────
     if experience_level == "0-2":
-        adjustment += 15   # junior workers are more replaceable
+        adjustment += 15
     elif experience_level == "10+":
-        adjustment -= 15   # senior expertise is harder to automate
+        adjustment -= 15
 
-    # ── 2. Task composition adjustment ───────────────────────────────────────
     if total > 0:
         repetitive_count = task_categories.count("repetitive")
         creative_count = task_categories.count("creative")
         human_count = task_categories.count("human_interaction")
 
         if repetitive_count / total > 0.5:
-            adjustment += 20   # majority repetitive: high risk
+            adjustment += 20
         elif (creative_count + human_count) / total > 0.5:
-            adjustment -= 20   # majority creative/strategic: lower risk
+            adjustment -= 20
 
-    # ── 3. Decision-making adjustment ────────────────────────────────────────
     if decision_making == "High":
-        adjustment -= 10   # high autonomy → harder to automate
+        adjustment -= 10
     elif decision_making == "Medium":
         adjustment -= 5
 
-    # ── 4. Tools adjustment ───────────────────────────────────────────────────
     if tools_used and uses_modern_tools(tools_used):
-        adjustment -= 10   # already using AI/automation → adaptive worker
+        adjustment -= 10
     elif not tools_used or not uses_modern_tools(tools_used):
-        adjustment += 10   # no modern tools → more vulnerable
+        adjustment += 10
 
     final = base_score + adjustment
     return max(0, min(100, final))  # clamp 0–100
@@ -222,7 +209,7 @@ def analyze_job_with_ai(
     try:
         prompt = build_prompt(job_title, tasks, experience_level, tools_used, decision_making)
 
-        # --- Call Groq ---
+        # Call Groq AI service
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
@@ -237,13 +224,12 @@ def analyze_job_with_ai(
         raw_content = completion.choices[0].message.content.strip()
         ai_data = json.loads(raw_content)
 
-        # --- Extract fields ---
         base_score = int(ai_data.get("base_risk_score", 50))
         task_analysis_raw = ai_data.get("task_analysis", [])
         recommendations = ai_data.get("recommendations", [])
         skills_to_learn = ai_data.get("skills_to_learn", [])
 
-        # --- Rule-based overrides on task categories ---
+        # Apply rule-based overrides safely
         task_categories = []
         task_analysis_final = []
 
@@ -273,7 +259,6 @@ def analyze_job_with_ai(
             "raw_ai_response": ai_data,
         }
     except Exception as e:
-        print(f"ERROR using Groq: {str(e)}. Falling back to Mock Mode.")
         return get_mock_analysis(job_title, tasks, experience_level, tools_used, decision_making)
 
 

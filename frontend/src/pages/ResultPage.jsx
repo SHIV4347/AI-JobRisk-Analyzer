@@ -63,8 +63,6 @@ export default function ResultPage() {
   return (
     <main className="min-h-screen py-8 px-6">
       <div className="max-w-6xl mx-auto">
-
-        {/* ── Top bar ── */}
         <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
           <button
             id="btn-back"
@@ -86,7 +84,6 @@ export default function ResultPage() {
           </div>
         </div>
 
-        {/* ── Page title ── */}
         <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-2">Analysis complete</p>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-50 tracking-tight">{job_title}</h1>
@@ -94,7 +91,6 @@ export default function ResultPage() {
             Based on {task_analysis.length} task{task_analysis.length !== 1 ? 's' : ''} analyzed
           </p>
 
-          {/* ── Context chips ── */}
           <div className="flex flex-wrap gap-2 mt-3">
             {/* Experience */}
             {experience_level && (
@@ -126,10 +122,7 @@ export default function ResultPage() {
           </div>
         </div>
 
-        {/* ── Main grid ── */}
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-5 items-start">
-
-          {/* ── Sidebar ── */}
           <div className="flex flex-col gap-5">
 
             {/* Risk score card */}
@@ -230,7 +223,6 @@ export default function ResultPage() {
             </div>
           </div>
 
-          {/* ── Main content ── */}
           <div className="flex flex-col gap-5">
 
             {/* Task Table */}
