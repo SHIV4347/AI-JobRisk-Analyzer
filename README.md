@@ -73,7 +73,7 @@ Visit `http://localhost:5173` to interact with the app.
 
 ---
 
-## 📦 Deployment
+## Deployment
 
 You can deploy this application easily to modern platforms:
 - **Frontend**: Deploy `frontend/` seamlessly to Vercel or Netlify. Add `VITE_API_URL` pointing to your backend URL.
