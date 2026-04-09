@@ -3,7 +3,7 @@
 An AI-powered full-stack application that analyzes the likelihood of a job being automated by AI. 
 This platform uses Groq (Llama-3 model) to provide a detailed task-by-task risk breakdown, actionable career recommendations, and a personalized skills-to-learn plan.
 
-## 🚀 Features
+## Features
 
 - **Detailed AI Analysis**: Input your job title, experience level, tools used, and daily tasks to get an in-depth automation risk score.
 - **Task Breakdown**: Identifies whether each of your everyday tasks is repetitive, creative, or requires human interaction.
@@ -12,7 +12,7 @@ This platform uses Groq (Llama-3 model) to provide a detailed task-by-task risk 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Frontend**: React, React Router, Vite, Tailwind CSS
 - **Backend**: FastAPI, Python, SQLAlchemy, PostgreSQL
@@ -20,7 +20,7 @@ This platform uses Groq (Llama-3 model) to provide a detailed task-by-task risk 
 
 ---
 
-## 💻 Local Development Setup
+## Local Development Setup
 
 ### 1. Prerequisites
 - Node.js (v18+)
@@ -83,7 +83,7 @@ You can deploy this application easily to modern platforms:
 
 ---
 
-## 🤝 Project Structure
+## Project Structure
 
 ```
 ├── backend/
