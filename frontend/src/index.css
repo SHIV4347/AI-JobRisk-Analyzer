@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0a0a0f;
+    color: #f1f5f9;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: #1e1e2a; border-radius: 99px; }
+
+  h1 { font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; }
+  h2 { font-weight: 700; line-height: 1.25; }
+  h3 { font-weight: 600; }
+}
+
+@layer components {
+
+  /* ── Navbar ── */
+  .navbar {
+    @apply sticky top-0 z-50 border-b border-white/[0.06] backdrop-blur-xl;
+    background: rgba(10, 10, 15, 0.88);
+  }
+
+  /* ── Card ── */
+  .card {
+    @apply bg-[#111118] border border-white/[0.07] rounded-2xl p-6 transition-colors duration-200;
+  }
+  .card:hover {
+    @apply border-white/[0.12];
+  }
+
+  /* ── Form Inputs ── */
+  .form-input {
+    @apply w-full bg-white/[0.03] border border-white/[0.1] rounded-lg px-4 py-3 
+           text-slate-100 placeholder-slate-500 font-[inherit] text-sm outline-none
+           transition-all duration-200;
+  }
+  .form-input:focus {
+    @apply border-indigo-500/60 ring-2 ring-indigo-500/10;
+  }
+
+  /* Select element — match dark input style */
+  select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  select.form-input option {
+    background-color: #111118;
+    color: #f1f5f9;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 w-full px-6 py-3
+           bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700
+           rounded-lg text-white text-sm font-semibold
+           transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed
+           ring-offset-[#0a0a0f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/60;
+  }
+  .btn-primary:hover:not(:disabled) {
+    @apply shadow-[0_0_20px_rgba(99,102,241,0.3)] -translate-y-px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2
+           bg-transparent border border-white/[0.1] rounded-lg
+           text-slate-400 text-sm font-medium
+           hover:bg-white/[0.04] hover:text-slate-200 hover:border-white/[0.18]
+           transition-all duration-150 cursor-pointer;
+  }
+
+  /* ── Badges / Pills ── */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase;
+  }
+  .badge-indigo {
+    @apply badge bg-indigo-500/10 text-indigo-400 border border-indigo-500/20;
+  }
+  .badge-red {
+    @apply badge bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+  .badge-yellow {
+    @apply badge bg-yellow-500/10 text-yellow-400 border border-yellow-500/20;
+  }
+  .badge-green {
+    @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+  .badge-cyan {
+    @apply badge bg-cyan-500/10 text-cyan-400 border border-cyan-500/20;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-4;
+  }
+}
+
+/* ── Risk Ring SVG ── */
+.risk-ring-svg {
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 9;
+}
+
+.ring-fill-line {
+  fill: none;
+  stroke-width: 9;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Score bar fill ── */
+.score-bar-fill-high   { background: #ef4444; }
+.score-bar-fill-medium { background: #f59e0b; }
+.score-bar-fill-low    { background: #10b981; }
+
+/* ── Fade-in animation ── */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stagger > * {
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger > *:nth-child(6) { animation-delay: 0.30s; }
+.stagger > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger > *:nth-child(8) { animation-delay: 0.40s; }
+
+/* ── Task row animation ── */
+@keyframes slideRow {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-row-anim {
+  animation: slideRow 0.25s ease forwards;
+}
