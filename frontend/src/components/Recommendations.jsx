@@ -56,15 +56,15 @@ export default function Recommendations({ recommendations, skills }) {
     <div className="flex flex-col gap-8">
       <div>
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-indigo-400">
+          <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-brand-teal">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"/>
               <path d="M12 8v4m0 4h.01"/>
             </svg>
           </div>
           <div>
-            <h2 className="text-base font-semibold text-slate-100">Recommendations</h2>
-            <p className="text-xs text-slate-500">{recommendations.length} action item{recommendations.length !== 1 ? 's' : ''}</p>
+            <h2 className="text-base font-bold text-slate-900">Recommendations</h2>
+            <p className="text-xs text-slate-500 font-medium">{recommendations.length} action item{recommendations.length !== 1 ? 's' : ''}</p>
           </div>
         </div>
 
@@ -74,10 +74,10 @@ export default function Recommendations({ recommendations, skills }) {
               key={i}
               className="flex gap-3 items-start p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-150"
             >
-              <div className="w-6 h-6 rounded-md bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 flex-shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-md bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal flex-shrink-0 mt-0.5">
                 {icons[ICON_KEYS[i % ICON_KEYS.length]]}
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">{rec}</p>
+              <p className="text-sm text-slate-700 leading-relaxed font-medium">{rec}</p>
             </li>
           ))}
         </ol>
@@ -92,8 +92,8 @@ export default function Recommendations({ recommendations, skills }) {
             </svg>
           </div>
           <div>
-            <h2 className="text-base font-semibold text-slate-100">Skills to Learn</h2>
-            <p className="text-xs text-slate-500">{skills.length} recommended skill{skills.length !== 1 ? 's' : ''}</p>
+            <h2 className="text-base font-bold text-slate-900">Skills to Learn</h2>
+            <p className="text-xs text-slate-500 font-medium">{skills.length} recommended skill{skills.length !== 1 ? 's' : ''}</p>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export default function Recommendations({ recommendations, skills }) {
           {skills.map((skill, i) => (
             <span
               key={i}
-              className="px-3 py-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] text-slate-300 text-[13px] font-medium hover:bg-white/[0.06] hover:border-white/[0.14] transition-all duration-150 cursor-default"
+              className="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 text-[13px] font-bold hover:bg-slate-100 hover:border-slate-300 transition-all duration-150 cursor-default"
             >
               {skill}
             </span>

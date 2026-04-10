@@ -4,9 +4,9 @@ const RADIUS = 60
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
 function getRiskColor(score) {
-  if (score >= 70) return { stroke: '#ef4444', text: 'text-red-400', bg: 'badge-red', label: 'High Risk' }
-  if (score >= 40) return { stroke: '#f59e0b', text: 'text-yellow-400', bg: 'badge-yellow', label: 'Medium Risk' }
-  return { stroke: '#10b981', text: 'text-emerald-400', bg: 'badge-green', label: 'Low Risk' }
+  if (score >= 70) return { stroke: '#ef4444', text: 'text-red-500', bg: 'badge-red', label: 'High Risk' }
+  if (score >= 40) return { stroke: '#f59e0b', text: 'text-amber-500', bg: 'badge-yellow', label: 'Medium Risk' }
+  return { stroke: '#10b981', text: 'text-emerald-500', bg: 'badge-green', label: 'Low Risk' }
 }
 
 export default function RiskMeter({ score, riskLevel }) {
@@ -49,7 +49,7 @@ export default function RiskMeter({ score, riskLevel }) {
         {/* Score label centered */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className={`text-4xl font-black leading-none ${colors.text}`}>{animScore}</span>
-          <span className="text-[11px] text-slate-500 font-medium mt-0.5">/ 100</span>
+          <span className="text-[11px] text-blue-200/40 font-bold mt-0.5">/ 100</span>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export default function RiskMeter({ score, riskLevel }) {
       <span className={colors.bg}>{riskLevel || colors.label}</span>
 
       {/* Subtle description */}
-      <p className="text-xs text-slate-500 text-center leading-relaxed max-w-[180px]">
+      <p className="text-xs text-blue-200/60 text-center leading-relaxed max-w-[180px]">
         {score >= 70
           ? 'High automation exposure detected'
           : score >= 40

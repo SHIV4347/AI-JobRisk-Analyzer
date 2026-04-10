@@ -61,7 +61,7 @@ export default function TaskTable({ tasks }) {
                   className="border-b border-white/[0.04] last:border-0 hover:bg-white/[0.02] transition-colors duration-100 group"
                 >
                   <td className="pl-6 py-3.5 text-slate-600 font-mono text-xs">{String(i + 1).padStart(2, '0')}</td>
-                  <td className="py-3.5 pr-4 text-slate-300 max-w-[240px] leading-snug">{t.task}</td>
+                  <td className="py-3.5 pr-4 text-slate-700 font-medium max-w-[240px] leading-snug">{t.task}</td>
                   <td className="py-3.5 pr-4 hidden sm:table-cell">
                     <span className={getCategoryBadge(t.category)}>
                       {t.category.replace('_', ' ')}

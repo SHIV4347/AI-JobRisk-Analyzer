@@ -11,18 +11,19 @@ export default {
       },
       colors: {
         gray: {
-          950: '#0a0a0f',
-          925: '#0f0f17',
-          900: '#111118',
-          850: '#16161f',
-          800: '#1a1a24',
-          750: '#1e1e2a',
-          700: '#252535',
+          950: '#002a70',
+          900: '#013ba0',
+          850: '#0156d6',
+          800: '#1a73e8',
+          700: '#4285f4',
         },
-        indigo: {
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
+        'brand-blue':   '#0156d6',
+        'brand-yellow': '#ffcc33',
+        'brand-teal':   '#00d2c1',
+        'brand-orange': '#ff8a00',
+        yellow: {
+          400: '#facc15', // Icon Yellow accent
+          500: '#eab308',
         },
       },
       animation: {

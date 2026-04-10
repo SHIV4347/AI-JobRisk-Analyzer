@@ -26,9 +26,9 @@ const EXPERIENCE_LABEL = {
 }
 
 const DECISION_COLOR = {
-  Low: 'text-yellow-400',
-  Medium: 'text-indigo-400',
-  High: 'text-emerald-400',
+  Low: 'text-amber-600',
+  Medium: 'text-brand-blue',
+  High: 'text-emerald-600',
 }
 
 export default function ResultPage() {
@@ -86,7 +86,7 @@ export default function ResultPage() {
 
         <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-2">Analysis complete</p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-50 tracking-tight">{job_title}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">{job_title}</h1>
           <p className="text-sm text-slate-500 mt-1">
             Based on {task_analysis.length} task{task_analysis.length !== 1 ? 's' : ''} analyzed
           </p>
@@ -94,7 +94,7 @@ export default function ResultPage() {
           <div className="flex flex-wrap gap-2 mt-3">
             {/* Experience */}
             {experience_level && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-slate-100 border border-slate-200 text-slate-700">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
                 </svg>
@@ -103,7 +103,7 @@ export default function ResultPage() {
             )}
             {/* Decision making */}
             {decision_making && (
-              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full bg-white/[0.05] border border-white/[0.08] ${DECISION_COLOR[decision_making] || 'text-slate-300'}`}>
+              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-slate-100 border border-slate-200 ${DECISION_COLOR[decision_making] || 'text-slate-700'}`}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/><path d="M12 8v4l3 3"/>
                 </svg>
@@ -114,7 +114,7 @@ export default function ResultPage() {
             {tools_used && tools_used.length > 0 && tools_used.map(tool => (
               <span
                 key={tool}
-                className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300"
+                className="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal"
               >
                 {tool}
               </span>
@@ -194,7 +194,7 @@ export default function ResultPage() {
               </div>
 
               {/* Risk insight */}
-              <div className="mt-5 pt-5 border-t border-white/[0.06]">
+              <div className="mt-5 pt-5 border-t border-slate-100">
                 <p className="text-xs text-slate-500 leading-relaxed">{riskInsight}</p>
               </div>
             </div>
@@ -214,9 +214,9 @@ export default function ResultPage() {
                   },
                   { label: 'Skills Suggested', value: skills_to_learn.length },
                 ].map(stat => (
-                  <div key={stat.label} className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-                    <p className="text-lg font-bold text-slate-100 leading-none mb-1">{stat.value}</p>
-                    <p className="text-[11px] text-slate-600 leading-tight">{stat.label}</p>
+                  <div key={stat.label} className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                    <p className="text-lg font-black text-slate-900 leading-none mb-1">{stat.value}</p>
+                    <p className="text-[11px] text-slate-500 font-bold leading-tight">{stat.label}</p>
                   </div>
                 ))}
               </div>

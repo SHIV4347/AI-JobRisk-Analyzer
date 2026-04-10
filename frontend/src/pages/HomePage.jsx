@@ -30,8 +30,8 @@ const HOW_IT_WORKS = [
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
       </svg>
     ),
     step: '01',
@@ -41,8 +41,8 @@ const HOW_IT_WORKS = [
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M12 8v4l3 3"/>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 8v4l3 3" />
       </svg>
     ),
     step: '02',
@@ -52,8 +52,8 @@ const HOW_IT_WORKS = [
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
-        <line x1="6" y1="20" x2="6" y2="14"/>
+        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
       </svg>
     ),
     step: '03',
@@ -63,7 +63,7 @@ const HOW_IT_WORKS = [
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     ),
     step: '04',
@@ -138,15 +138,15 @@ export default function HomePage() {
     <main className="min-h-screen">
       <section className="pt-20 pb-12 px-6 text-center">
         <div className="max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-slate-400 text-xs font-medium mb-8">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-slate-400 text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"/>
             AI-Powered Career Intelligence
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-slate-50 mb-5 tracking-tight">
+          </div> */}
+          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-slate-900 mb-5 tracking-tight">
             Is your job at risk<br />
-            <span className="text-indigo-400">from AI automation?</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-teal">from AI automation?</span>
           </h1>
-          <p className="text-[15px] text-slate-400 max-w-lg mx-auto leading-relaxed">
+          <p className="text-[15px] text-slate-500 max-w-lg mx-auto leading-relaxed">
             Enter your job role, experience, tools, and daily tasks.
             Our AI will assess automation risk and give you an actionable plan.
           </p>
@@ -179,9 +179,9 @@ export default function HomePage() {
           {error && (
             <div className="flex items-start gap-3 p-3.5 mb-5 rounded-lg bg-red-500/[0.08] border border-red-500/[0.2] text-red-400 text-sm">
               <svg className="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="8" x2="12" y2="12"/>
-                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
               {error}
             </div>
@@ -189,7 +189,7 @@ export default function HomePage() {
 
           {/* Job Title */}
           <div className="mb-5">
-            <label htmlFor="job-title" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+            <label htmlFor="job-title" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
               Job Title
             </label>
             <input
@@ -206,7 +206,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
-              <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
                 Experience (years)
               </label>
               <select
@@ -223,7 +223,7 @@ export default function HomePage() {
 
             {/* Decision Making */}
             <div>
-              <label htmlFor="decision-making" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="decision-making" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
                 Decision Making
               </label>
               <select
@@ -241,7 +241,7 @@ export default function HomePage() {
 
           {/* Tools Used */}
           <div className="mb-6">
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
               Tools & Technologies Used
             </label>
             <p className="text-xs text-slate-600 mb-3">
@@ -254,17 +254,17 @@ export default function HomePage() {
                 {toolsUsed.map(tool => (
                   <span
                     key={tool}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue"
                   >
                     {tool}
                     <button
                       type="button"
                       onClick={() => removeTool(tool)}
-                      className="text-indigo-400 hover:text-red-400 transition-colors duration-100"
+                      className="text-brand-blue hover:text-red-500 transition-colors duration-100"
                       title={`Remove ${tool}`}
                     >
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                       </svg>
                     </button>
                   </span>
@@ -287,7 +287,7 @@ export default function HomePage() {
                 type="button"
                 id="btn-add-tool"
                 onClick={addTool}
-                className="px-3 py-2 rounded-lg border border-white/[0.1] bg-white/[0.04] text-slate-300 text-sm font-medium hover:border-indigo-500/40 hover:text-indigo-300 hover:bg-indigo-500/[0.06] transition-all duration-150 whitespace-nowrap"
+                className="px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-600 text-sm font-semibold hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5 transition-all duration-150 whitespace-nowrap shadow-sm"
               >
                 + Add
               </button>
@@ -296,7 +296,7 @@ export default function HomePage() {
 
           {/* Tasks */}
           <div className="mb-6">
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
               Daily Tasks
             </label>
             <p className="text-xs text-slate-600 mb-3">
@@ -306,7 +306,7 @@ export default function HomePage() {
             <div className="flex flex-col gap-2 mb-2">
               {tasks.map((task, idx) => (
                 <div key={idx} className="task-row-anim flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-md flex-shrink-0 bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[10px] font-bold text-slate-600 font-mono">
+                  <span className="w-6 h-6 rounded-md flex-shrink-0 bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 font-mono">
                     {idx + 1}
                   </span>
                   <input
@@ -325,7 +325,7 @@ export default function HomePage() {
                       className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg border border-white/[0.07] bg-transparent text-slate-600 hover:text-red-400 hover:border-red-400/30 hover:bg-red-400/5 transition-all duration-150"
                     >
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                       </svg>
                     </button>
                   )}
@@ -339,13 +339,13 @@ export default function HomePage() {
                 id="btn-add-task"
                 onClick={addTask}
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-4 mt-1
-                           border border-dashed border-white/[0.1] rounded-lg
-                           text-slate-500 text-sm font-medium
-                           hover:border-indigo-500/40 hover:text-indigo-400 hover:bg-indigo-500/[0.03]
+                           border border-dashed border-slate-300 rounded-lg
+                           text-slate-400 text-sm font-semibold
+                           hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5
                            transition-all duration-150"
               >
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                  <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
                 </svg>
                 Add another task
               </button>
@@ -362,15 +362,15 @@ export default function HomePage() {
             {loading ? (
               <>
                 <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                 </svg>
                 Analyzing with AI...
               </>
             ) : (
               <>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8"/>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
                 Analyze My Job Risk
               </>
@@ -384,16 +384,16 @@ export default function HomePage() {
             {HOW_IT_WORKS.map((step) => (
               <div
                 key={step.step}
-                className="flex flex-col gap-3 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-150"
+                className="flex flex-col gap-3 p-4 rounded-xl border border-slate-200 bg-white hover:bg-blue-50/50 hover:border-brand-blue/20 transition-all duration-150 shadow-sm"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-indigo-400">
+                  <div className="w-8 h-8 rounded-lg bg-brand-blue/8 border border-brand-blue/15 flex items-center justify-center text-brand-blue">
                     {step.icon}
                   </div>
                   <span className="text-[11px] font-mono font-bold text-slate-700">{step.step}</span>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-200 mb-1">{step.title}</p>
+                  <p className="text-sm font-semibold text-slate-800 mb-1">{step.title}</p>
                   <p className="text-xs text-slate-500 leading-relaxed">{step.desc}</p>
                 </div>
               </div>
