@@ -5,25 +5,39 @@ import api from '../api'
 const EXAMPLE_JOBS = [
   {
     title: 'Data Analyst',
-    tasks: ['Collect data from spreadsheets', 'Generate weekly reports', 'Visualize trends using charts', 'Communicate findings to stakeholders'],
-    experience_level: '3-5',
+    tasks: [
+      'Collect data from spreadsheets',
+      'Generate weekly reports',
+      'Visualize trends using charts',
+      'Communicate findings to stakeholders'
+    ],
+    experience_level: '0-2',
     tools_used: ['Excel', 'SQL', 'Tableau'],
     decision_making: 'Medium',
   },
   {
     title: 'Software Engineer',
-    tasks: ['Design system architecture', 'Write and review code', 'Debug production issues', 'Collaborate in agile ceremonies'],
-    experience_level: '5-10',
-    tools_used: ['Python', 'GitHub', 'Docker', 'AI tools'],
-    decision_making: 'High',
+    tasks: [
+      'Copy paste chatgpt code',
+      'Solve bugs with the help of gemini',
+      'Code with antigravity agents'
+    ],
+    experience_level: '0-2',
+    tools_used: ['Python', 'Git', 'chatgpt', 'Antigravity', 'Claude'],
+    decision_making: 'Low',
   },
   {
     title: 'Customer Support Rep',
-    tasks: ['Answer customer queries via email', 'Log support tickets', 'Escalate unresolved issues', 'Empathize and counsel distressed customers'],
+    tasks: [
+      'Answer customer queries via email',
+      'Log support tickets',
+      'Escalate unresolved issues',
+      'Empathize and counsel distressed customers'
+    ],
     experience_level: '0-2',
     tools_used: ['Excel'],
     decision_making: 'Low',
-  },
+  }
 ]
 
 const HOW_IT_WORKS = [
@@ -155,7 +169,7 @@ export default function HomePage() {
           <a href="#analyze" className="btn-primary w-auto px-8 py-3.5 text-base rounded-full inline-flex items-center gap-2 transition-all hover:scale-105 shadow-md hover:shadow-lg">
             Start Free Analysis
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 5v14M19 12l-7 7-7-7"/>
+              <path d="M12 5v14M19 12l-7 7-7-7" />
             </svg>
           </a>
         </div>
@@ -215,225 +229,225 @@ export default function HomePage() {
             </div>
           </div>
 
-        {/* Form card */}
-        <form onSubmit={handleSubmit} className="card fade-in w-full p-6 sm:p-8">
+          {/* Form card */}
+          <form onSubmit={handleSubmit} className="card fade-in w-full p-6 sm:p-8">
 
-          {/* Error */}
-          {error && (
-            <div className="flex items-start gap-3 p-3.5 mb-5 rounded-lg bg-red-500/[0.08] border border-red-500/[0.2] text-red-400 text-sm">
-              <svg className="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              {error}
-            </div>
-          )}
+            {/* Error */}
+            {error && (
+              <div className="flex items-start gap-3 p-3.5 mb-5 rounded-lg bg-red-500/[0.08] border border-red-500/[0.2] text-red-400 text-sm">
+                <svg className="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                {error}
+              </div>
+            )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
-            {/* --- LEFT COLUMN --- */}
-            <div className="flex flex-col justify-between">
-              {/* Group Job Title and Experience together to align bottom tools with bottom add-task */}
-              <div>
-                {/* Job Title */}
-                <div className="mb-5">
-                  <label htmlFor="job-title" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
-                    Job Title
-                  </label>
-                  <input
-                    id="job-title"
-                    className="form-input"
-                    type="text"
-                    placeholder="e.g. Data Analyst, Software Engineer, Accountant"
-                    value={jobTitle}
-                    onChange={e => setJobTitle(e.target.value)}
-                    maxLength={200}
-                    required
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 mb-5">
-                  <div>
-                    <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
-                      Experience (years)
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+              {/* --- LEFT COLUMN --- */}
+              <div className="flex flex-col justify-between">
+                {/* Group Job Title and Experience together to align bottom tools with bottom add-task */}
+                <div>
+                  {/* Job Title */}
+                  <div className="mb-5">
+                    <label htmlFor="job-title" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                      Job Title
                     </label>
-                    <select
-                      id="experience-level"
+                    <input
+                      id="job-title"
                       className="form-input"
-                      value={experienceLevel}
-                      onChange={e => setExperienceLevel(e.target.value)}
-                    >
-                      {EXPERIENCE_OPTIONS.map(opt => (
-                        <option key={opt} value={opt}>{opt} years</option>
-                      ))}
-                    </select>
+                      type="text"
+                      placeholder="e.g. Data Analyst, Software Engineer, Accountant"
+                      value={jobTitle}
+                      onChange={e => setJobTitle(e.target.value)}
+                      maxLength={200}
+                      required
+                    />
                   </div>
 
-                  {/* Decision Making */}
-                  <div>
-                    <label htmlFor="decision-making" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
-                      Decision Making
-                    </label>
-                    <select
-                      id="decision-making"
-                      className="form-input"
-                      value={decisionMaking}
-                      onChange={e => setDecisionMaking(e.target.value)}
-                    >
-                      {DECISION_OPTIONS.map(opt => (
-                        <option key={opt} value={opt}>{opt}</option>
+                  <div className="grid grid-cols-2 gap-4 mb-5">
+                    <div>
+                      <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                        Experience (years)
+                      </label>
+                      <select
+                        id="experience-level"
+                        className="form-input"
+                        value={experienceLevel}
+                        onChange={e => setExperienceLevel(e.target.value)}
+                      >
+                        {EXPERIENCE_OPTIONS.map(opt => (
+                          <option key={opt} value={opt}>{opt} years</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Decision Making */}
+                    <div>
+                      <label htmlFor="decision-making" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                        Decision Making
+                      </label>
+                      <select
+                        id="decision-making"
+                        className="form-input"
+                        value={decisionMaking}
+                        onChange={e => setDecisionMaking(e.target.value)}
+                      >
+                        {DECISION_OPTIONS.map(opt => (
+                          <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tools Used - This will now be pushed to the bottom along with the right side button */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                    Tools & Technologies Used
+                  </label>
+                  <p className="text-xs text-slate-600 mb-3">
+                    Type a tool and press Enter or click Add
+                  </p>
+
+                  {/* Tag chips */}
+                  {toolsUsed.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {toolsUsed.map(tool => (
+                        <span
+                          key={tool}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue"
+                        >
+                          {tool}
+                          <button
+                            type="button"
+                            onClick={() => removeTool(tool)}
+                            className="text-brand-blue hover:text-red-500 transition-colors duration-100"
+                            title={`Remove ${tool}`}
+                          >
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                          </button>
+                        </span>
                       ))}
-                    </select>
+                    </div>
+                  )}
+
+                  {/* Tool input row */}
+                  <div className="flex gap-2">
+                    <input
+                      id="tool-input"
+                      className="form-input flex-1"
+                      type="text"
+                      placeholder="e.g. Excel, Python, AI tools, Salesforce"
+                      value={toolInput}
+                      onChange={e => setToolInput(e.target.value)}
+                      onKeyDown={handleToolKeyDown}
+                    />
+                    <button
+                      type="button"
+                      nonce="btn-add-tool"
+                      onClick={addTool}
+                      className="px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-600 text-sm font-semibold hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5 transition-all duration-150 whitespace-nowrap shadow-sm"
+                    >
+                      + Add
+                    </button>
                   </div>
                 </div>
               </div>
 
-              {/* Tools Used - This will now be pushed to the bottom along with the right side button */}
-              <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
-                  Tools & Technologies Used
-                </label>
-                <p className="text-xs text-slate-600 mb-3">
-                  Type a tool and press Enter or click Add
-                </p>
+              {/* --- RIGHT COLUMN --- */}
+              <div className="flex flex-col justify-between">
+                {/* Tasks label + inputs */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                    Daily Tasks
+                  </label>
+                  <p className="text-xs text-slate-600 mb-3">
+                    Describe what you actually do day-to-day (up to 15 tasks)
+                  </p>
 
-                {/* Tag chips */}
-                {toolsUsed.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-2">
-                    {toolsUsed.map(tool => (
-                      <span
-                        key={tool}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue"
-                      >
-                        {tool}
-                        <button
-                          type="button"
-                          onClick={() => removeTool(tool)}
-                          className="text-brand-blue hover:text-red-500 transition-colors duration-100"
-                          title={`Remove ${tool}`}
-                        >
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                          </svg>
-                        </button>
-                      </span>
+                  <div className="flex flex-col gap-2 mb-2">
+                    {tasks.map((task, idx) => (
+                      <div key={idx} className="task-row-anim flex items-center gap-2">
+                        <span className="w-6 h-6 rounded-md flex-shrink-0 bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 font-mono">
+                          {idx + 1}
+                        </span>
+                        <input
+                          id={`task-input-${idx}`}
+                          className="form-input flex-1"
+                          type="text"
+                          placeholder={`Task ${idx + 1} — e.g. "Prepare monthly financial reports"`}
+                          value={task}
+                          onChange={e => updateTask(idx, e.target.value)}
+                        />
+                        {tasks.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => removeTask(idx)}
+                            title="Remove task"
+                            className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg border border-white/[0.07] bg-transparent text-slate-600 hover:text-red-400 hover:border-red-400/30 hover:bg-red-400/5 transition-all duration-150"
+                          >
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
                     ))}
                   </div>
-                )}
+                </div>
 
-                {/* Tool input row */}
-                <div className="flex gap-2">
-                  <input
-                    id="tool-input"
-                    className="form-input flex-1"
-                    type="text"
-                    placeholder="e.g. Excel, Python, AI tools, Salesforce"
-                    value={toolInput}
-                    onChange={e => setToolInput(e.target.value)}
-                    onKeyDown={handleToolKeyDown}
-                  />
+                {/* Add task button — pushed to bottom by justify-between to align with Tool input row */}
+                {tasks.length < 15 && (
                   <button
                     type="button"
-                    nonce="btn-add-tool"
-                    onClick={addTool}
-                    className="px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-600 text-sm font-semibold hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5 transition-all duration-150 whitespace-nowrap shadow-sm"
-                  >
-                    + Add
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* --- RIGHT COLUMN --- */}
-            <div className="flex flex-col justify-between">
-              {/* Tasks label + inputs */}
-              <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
-                  Daily Tasks
-                </label>
-                <p className="text-xs text-slate-600 mb-3">
-                  Describe what you actually do day-to-day (up to 15 tasks)
-                </p>
-
-                <div className="flex flex-col gap-2 mb-2">
-                  {tasks.map((task, idx) => (
-                    <div key={idx} className="task-row-anim flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-md flex-shrink-0 bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 font-mono">
-                        {idx + 1}
-                      </span>
-                      <input
-                        id={`task-input-${idx}`}
-                        className="form-input flex-1"
-                        type="text"
-                        placeholder={`Task ${idx + 1} — e.g. "Prepare monthly financial reports"`}
-                        value={task}
-                        onChange={e => updateTask(idx, e.target.value)}
-                      />
-                      {tasks.length > 1 && (
-                        <button
-                          type="button"
-                          onClick={() => removeTask(idx)}
-                          title="Remove task"
-                          className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg border border-white/[0.07] bg-transparent text-slate-600 hover:text-red-400 hover:border-red-400/30 hover:bg-red-400/5 transition-all duration-150"
-                        >
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                          </svg>
-                        </button>
-                      )}
-                    </div>
-                  ))}
-              </div>
-              </div>
-
-              {/* Add task button — pushed to bottom by justify-between to align with Tool input row */}
-              {tasks.length < 15 && (
-                <button
-                  type="button"
-                  id="btn-add-task"
-                  onClick={addTask}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4
+                    id="btn-add-task"
+                    onClick={addTask}
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4
                              border border-dashed border-slate-300 rounded-lg
                              text-slate-400 text-sm font-semibold
                              hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5
                              transition-all duration-150"
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                    <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                  Add another task
-                </button>
-              )}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Add another task
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Submit */}
-          <div className="mt-4 pt-6 border-t border-slate-100/60">
-            <button
-              id="btn-analyze"
-              type="submit"
-              className="btn-primary py-3.5 w-full md:w-auto md:px-12 mx-auto"
-              disabled={loading}
-            >
-            {loading ? (
-              <>
-                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-                </svg>
-                Analyzing with AI...
-              </>
-            ) : (
-              <>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                Analyze My Job Risk
-              </>
-            )}
-            </button>
-          </div>
-        </form>
+            {/* Submit */}
+            <div className="mt-4 pt-6 border-t border-slate-100/60">
+              <button
+                id="btn-analyze"
+                type="submit"
+                className="btn-primary py-3.5 w-full md:w-auto md:px-12 mx-auto"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                    </svg>
+                    Analyzing with AI...
+                  </>
+                ) : (
+                  <>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    Analyze My Job Risk
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
 
         </div>
       </section>
