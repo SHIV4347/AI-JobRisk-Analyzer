@@ -78,7 +78,7 @@ const DECISION_OPTIONS = ['Low', 'Medium', 'High']
 export default function HomePage() {
   const navigate = useNavigate()
   const [jobTitle, setJobTitle] = useState('')
-  const [tasks, setTasks] = useState(['', ''])
+  const [tasks, setTasks] = useState(['', '', ''])
   const [experienceLevel, setExperienceLevel] = useState('3-5')
   const [toolsUsed, setToolsUsed] = useState([])
   const [toolInput, setToolInput] = useState('')
@@ -135,45 +135,88 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen">
-      <section className="pt-20 pb-12 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
-          {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-slate-400 text-xs font-medium mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"/>
-            AI-Powered Career Intelligence
-          </div> */}
-          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-slate-900 mb-5 tracking-tight">
+    <main className="flex flex-col w-full">
+      {/* --- HERO SECTION --- */}
+      <section className="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center px-6 py-20 text-center">
+        <div className="max-w-6xl mx-auto w-full flex flex-col items-center">
+          {/* Eyebrow label */}
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/8 border border-brand-blue/15 text-brand-blue text-[11px] font-bold uppercase tracking-widest mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue inline-block"></span>
+            AI Automation Risk Analyzer
+          </span>
+          <h1 className="text-4xl sm:text-5xl md:text-[60px] font-black text-slate-900 mb-6 tracking-tight leading-[1.08] max-w-3xl">
             Is your job at risk<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-teal">from AI automation?</span>
           </h1>
-          <p className="text-[15px] text-slate-500 max-w-lg mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed mb-10">
             Enter your job role, experience, tools, and daily tasks.
             Our AI will assess automation risk and give you an actionable plan.
           </p>
+          <a href="#analyze" className="btn-primary w-auto px-8 py-3.5 text-base rounded-full inline-flex items-center gap-2 transition-all hover:scale-105 shadow-md hover:shadow-lg">
+            Start Free Analysis
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+          </a>
         </div>
       </section>
 
-      <div className="max-w-2xl mx-auto px-6 pb-24">
-        <div className="mb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-600 mb-3">
-            Try an example
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {EXAMPLE_JOBS.map((ex) => (
-              <button
-                key={ex.title}
-                id={`example-${ex.title.toLowerCase().replace(/\s/g, '-')}`}
-                className="btn-secondary text-xs px-3 py-1.5"
-                onClick={() => loadExample(ex)}
+      {/* --- HOW IT WORKS SECTION --- */}
+      <section id="how-it-works" className="w-full scroll-mt-20 px-6 py-12 bg-slate-50/60 border-t border-slate-200/60">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="mb-10 text-center">
+            <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-1">How it Works</h2>
+            <p className="text-sm text-slate-500">Four simple steps to understand your AI risk.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 stagger">
+            {HOW_IT_WORKS.map((step) => (
+              <div
+                key={step.step}
+                className="flex flex-col gap-4 p-5 rounded-2xl border border-slate-200 bg-white hover:bg-blue-50/50 hover:border-brand-blue/20 transition-all duration-150 shadow-sm hover:shadow-md"
               >
-                {ex.title}
-              </button>
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue/8 border border-brand-blue/15 flex items-center justify-center text-brand-blue">
+                    {step.icon}
+                  </div>
+                  <span className="text-xs font-mono font-black text-slate-400">{step.step}</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-slate-800 mb-1.5">{step.title}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* --- FORM SECTION --- */}
+      <section id="analyze" className="w-full px-6 pt-6 pb-16 border-t border-slate-200/60 scroll-mt-0">
+        <div className="w-full max-w-6xl mx-auto flex flex-col">
+
+          {/* Section header + examples */}
+          <div className="mb-4">
+            <div className="mb-3">
+              <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-1">Analyze Your Job</h2>
+              <p className="text-sm text-slate-500">Fill in your details and let AI assess your risk level.</p>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mr-1">Try:</span>
+              {EXAMPLE_JOBS.map((ex) => (
+                <button
+                  key={ex.title}
+                  id={`example-${ex.title.toLowerCase().replace(/\s/g, '-')}`}
+                  className="btn-secondary text-xs px-3 py-1.5"
+                  onClick={() => loadExample(ex)}
+                >
+                  {ex.title}
+                </button>
+              ))}
+            </div>
+          </div>
 
         {/* Form card */}
-        <form onSubmit={handleSubmit} className="card fade-in">
+        <form onSubmit={handleSubmit} className="card fade-in w-full p-6 sm:p-8">
 
           {/* Error */}
           {error && (
@@ -187,178 +230,191 @@ export default function HomePage() {
             </div>
           )}
 
-          {/* Job Title */}
-          <div className="mb-5">
-            <label htmlFor="job-title" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
-              Job Title
-            </label>
-            <input
-              id="job-title"
-              className="form-input"
-              type="text"
-              placeholder="e.g. Data Analyst, Software Engineer, Accountant"
-              value={jobTitle}
-              onChange={e => setJobTitle(e.target.value)}
-              maxLength={200}
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-5">
-            <div>
-              <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
-                Experience (years)
-              </label>
-              <select
-                id="experience-level"
-                className="form-input"
-                value={experienceLevel}
-                onChange={e => setExperienceLevel(e.target.value)}
-              >
-                {EXPERIENCE_OPTIONS.map(opt => (
-                  <option key={opt} value={opt}>{opt} years</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Decision Making */}
-            <div>
-              <label htmlFor="decision-making" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
-                Decision Making
-              </label>
-              <select
-                id="decision-making"
-                className="form-input"
-                value={decisionMaking}
-                onChange={e => setDecisionMaking(e.target.value)}
-              >
-                {DECISION_OPTIONS.map(opt => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Tools Used */}
-          <div className="mb-6">
-            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
-              Tools & Technologies Used
-            </label>
-            <p className="text-xs text-slate-600 mb-3">
-              Type a tool and press Enter or click Add (e.g. Excel, Python, Salesforce, AI tools)
-            </p>
-
-            {/* Tag chips */}
-            {toolsUsed.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-2">
-                {toolsUsed.map(tool => (
-                  <span
-                    key={tool}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue"
-                  >
-                    {tool}
-                    <button
-                      type="button"
-                      onClick={() => removeTool(tool)}
-                      className="text-brand-blue hover:text-red-500 transition-colors duration-100"
-                      title={`Remove ${tool}`}
-                    >
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                      </svg>
-                    </button>
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {/* Tool input row */}
-            <div className="flex gap-2">
-              <input
-                id="tool-input"
-                className="form-input flex-1"
-                type="text"
-                placeholder="e.g. Excel, Python, AI tools, Salesforce"
-                value={toolInput}
-                onChange={e => setToolInput(e.target.value)}
-                onKeyDown={handleToolKeyDown}
-              />
-              <button
-                type="button"
-                id="btn-add-tool"
-                onClick={addTool}
-                className="px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-600 text-sm font-semibold hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5 transition-all duration-150 whitespace-nowrap shadow-sm"
-              >
-                + Add
-              </button>
-            </div>
-          </div>
-
-          {/* Tasks */}
-          <div className="mb-6">
-            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
-              Daily Tasks
-            </label>
-            <p className="text-xs text-slate-600 mb-3">
-              Describe what you actually do day-to-day (up to 15 tasks)
-            </p>
-
-            <div className="flex flex-col gap-2 mb-2">
-              {tasks.map((task, idx) => (
-                <div key={idx} className="task-row-anim flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-md flex-shrink-0 bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 font-mono">
-                    {idx + 1}
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+            {/* --- LEFT COLUMN --- */}
+            <div className="flex flex-col justify-between">
+              {/* Group Job Title and Experience together to align bottom tools with bottom add-task */}
+              <div>
+                {/* Job Title */}
+                <div className="mb-5">
+                  <label htmlFor="job-title" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                    Job Title
+                  </label>
                   <input
-                    id={`task-input-${idx}`}
+                    id="job-title"
+                    className="form-input"
+                    type="text"
+                    placeholder="e.g. Data Analyst, Software Engineer, Accountant"
+                    value={jobTitle}
+                    onChange={e => setJobTitle(e.target.value)}
+                    maxLength={200}
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-5">
+                  <div>
+                    <label htmlFor="experience-level" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                      Experience (years)
+                    </label>
+                    <select
+                      id="experience-level"
+                      className="form-input"
+                      value={experienceLevel}
+                      onChange={e => setExperienceLevel(e.target.value)}
+                    >
+                      {EXPERIENCE_OPTIONS.map(opt => (
+                        <option key={opt} value={opt}>{opt} years</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Decision Making */}
+                  <div>
+                    <label htmlFor="decision-making" className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                      Decision Making
+                    </label>
+                    <select
+                      id="decision-making"
+                      className="form-input"
+                      value={decisionMaking}
+                      onChange={e => setDecisionMaking(e.target.value)}
+                    >
+                      {DECISION_OPTIONS.map(opt => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tools Used - This will now be pushed to the bottom along with the right side button */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                  Tools & Technologies Used
+                </label>
+                <p className="text-xs text-slate-600 mb-3">
+                  Type a tool and press Enter or click Add
+                </p>
+
+                {/* Tag chips */}
+                {toolsUsed.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {toolsUsed.map(tool => (
+                      <span
+                        key={tool}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue"
+                      >
+                        {tool}
+                        <button
+                          type="button"
+                          onClick={() => removeTool(tool)}
+                          className="text-brand-blue hover:text-red-500 transition-colors duration-100"
+                          title={`Remove ${tool}`}
+                        >
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                          </svg>
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Tool input row */}
+                <div className="flex gap-2">
+                  <input
+                    id="tool-input"
                     className="form-input flex-1"
                     type="text"
-                    placeholder={`Task ${idx + 1} — e.g. "Prepare monthly financial reports"`}
-                    value={task}
-                    onChange={e => updateTask(idx, e.target.value)}
+                    placeholder="e.g. Excel, Python, AI tools, Salesforce"
+                    value={toolInput}
+                    onChange={e => setToolInput(e.target.value)}
+                    onKeyDown={handleToolKeyDown}
                   />
-                  {tasks.length > 1 && (
-                    <button
-                      type="button"
-                      onClick={() => removeTask(idx)}
-                      title="Remove task"
-                      className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg border border-white/[0.07] bg-transparent text-slate-600 hover:text-red-400 hover:border-red-400/30 hover:bg-red-400/5 transition-all duration-150"
-                    >
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                      </svg>
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    nonce="btn-add-tool"
+                    onClick={addTool}
+                    className="px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-600 text-sm font-semibold hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5 transition-all duration-150 whitespace-nowrap shadow-sm"
+                  >
+                    + Add
+                  </button>
                 </div>
-              ))}
+              </div>
             </div>
 
-            {tasks.length < 15 && (
-              <button
-                type="button"
-                id="btn-add-task"
-                onClick={addTask}
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 mt-1
-                           border border-dashed border-slate-300 rounded-lg
-                           text-slate-400 text-sm font-semibold
-                           hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5
-                           transition-all duration-150"
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-                Add another task
-              </button>
-            )}
+            {/* --- RIGHT COLUMN --- */}
+            <div className="flex flex-col justify-between">
+              {/* Tasks label + inputs */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                  Daily Tasks
+                </label>
+                <p className="text-xs text-slate-600 mb-3">
+                  Describe what you actually do day-to-day (up to 15 tasks)
+                </p>
+
+                <div className="flex flex-col gap-2 mb-2">
+                  {tasks.map((task, idx) => (
+                    <div key={idx} className="task-row-anim flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-md flex-shrink-0 bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 font-mono">
+                        {idx + 1}
+                      </span>
+                      <input
+                        id={`task-input-${idx}`}
+                        className="form-input flex-1"
+                        type="text"
+                        placeholder={`Task ${idx + 1} — e.g. "Prepare monthly financial reports"`}
+                        value={task}
+                        onChange={e => updateTask(idx, e.target.value)}
+                      />
+                      {tasks.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeTask(idx)}
+                          title="Remove task"
+                          className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg border border-white/[0.07] bg-transparent text-slate-600 hover:text-red-400 hover:border-red-400/30 hover:bg-red-400/5 transition-all duration-150"
+                        >
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+              </div>
+              </div>
+
+              {/* Add task button — pushed to bottom by justify-between to align with Tool input row */}
+              {tasks.length < 15 && (
+                <button
+                  type="button"
+                  id="btn-add-task"
+                  onClick={addTask}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4
+                             border border-dashed border-slate-300 rounded-lg
+                             text-slate-400 text-sm font-semibold
+                             hover:border-brand-blue/40 hover:text-brand-blue hover:bg-brand-blue/5
+                             transition-all duration-150"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                  Add another task
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Submit */}
-          <button
-            id="btn-analyze"
-            type="submit"
-            className="btn-primary py-3"
-            disabled={loading}
-          >
+          <div className="mt-4 pt-6 border-t border-slate-100/60">
+            <button
+              id="btn-analyze"
+              type="submit"
+              className="btn-primary py-3.5 w-full md:w-auto md:px-12 mx-auto"
+              disabled={loading}
+            >
             {loading ? (
               <>
                 <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -375,33 +431,14 @@ export default function HomePage() {
                 Analyze My Job Risk
               </>
             )}
-          </button>
+            </button>
+          </div>
         </form>
 
-        <div className="mt-16">
-          <p className="section-label text-center">How it works</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 stagger">
-            {HOW_IT_WORKS.map((step) => (
-              <div
-                key={step.step}
-                className="flex flex-col gap-3 p-4 rounded-xl border border-slate-200 bg-white hover:bg-blue-50/50 hover:border-brand-blue/20 transition-all duration-150 shadow-sm"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-lg bg-brand-blue/8 border border-brand-blue/15 flex items-center justify-center text-brand-blue">
-                    {step.icon}
-                  </div>
-                  <span className="text-[11px] font-mono font-bold text-slate-700">{step.step}</span>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-800 mb-1">{step.title}</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
+      </section>
 
-      </div>
+
     </main>
   )
 }

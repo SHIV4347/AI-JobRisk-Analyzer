@@ -14,18 +14,18 @@ export default function App() {
           <Route path="/results" element={<ResultPage />} />
         </Routes>
       </main>
-      <footer className="border-t border-slate-200 py-10 mt-12 bg-white/50 backdrop-blur-md">
+      <footer className="border-t border-slate-200 py-8 bg-white/50 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left: Logo */}
-          <div className="flex items-center gap-2.5 z-10">
-            <img src={favIcon} alt="Logo" className="w-5 h-5 object-contain" />
-            <span className="font-bold text-[15px] text-slate-900 tracking-tight">RiskRadar AI</span>
+          <div className="flex items-center gap-3 z-10">
+            <img src={favIcon} alt="Logo" className="w-12 h-12 object-contain" />
+            <span className="font-bold text-xl text-slate-900 tracking-tight">JobSense AI</span>
           </div>
 
           {/* Center: Tagline (Absolute centered on MD+) */}
           <div className="md:absolute md:left-1/2 md:-translate-x-1/2 text-center pointer-events-none">
             <p className="text-[12px] font-black text-brand-blue/80 tracking-[0.15em] uppercase">
-              Built to future-proof your career.
+              Understand your job. Stay ahead of AI.
             </p>
           </div>
 
