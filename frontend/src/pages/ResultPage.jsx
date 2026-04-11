@@ -28,6 +28,7 @@ export default function ResultPage() {
   const result = location.state?.result
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (!result) navigate('/', { replace: true })
   }, [result, navigate])
 

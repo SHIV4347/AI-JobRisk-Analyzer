@@ -16,7 +16,6 @@ export default function Navbar() {
 
         <div className="hidden sm:flex items-center gap-6">
           <a href="/" className="text-[13px] font-bold text-slate-500 hover:text-brand-blue transition-colors uppercase tracking-wide">Home</a>
-          <a href="#how-it-works" className="text-[13px] font-bold text-slate-500 hover:text-brand-blue transition-colors uppercase tracking-wide">How it Works</a>
           <a href="#analyze" className="text-[13px] font-bold text-brand-blue bg-brand-blue/10 px-4 py-2 flex items-center justify-center rounded-full hover:bg-brand-blue/20 transition-colors">Analyze Job</a>
         </div>
       </div>
