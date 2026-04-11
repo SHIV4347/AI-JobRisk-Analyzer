@@ -72,12 +72,12 @@ export default function Recommendations({ recommendations, skills }) {
           {recommendations.map((rec, i) => (
             <li
               key={i}
-              className="flex gap-3 items-start p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-150"
+              className="flex gap-3 items-start p-4 rounded-xl border border-slate-100 bg-slate-50/40 hover:bg-slate-50/80 hover:border-slate-200 transition-all duration-150"
             >
               <div className="w-6 h-6 rounded-md bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal flex-shrink-0 mt-0.5">
                 {icons[ICON_KEYS[i % ICON_KEYS.length]]}
               </div>
-              <p className="text-sm text-slate-700 leading-relaxed font-medium">{rec}</p>
+              <p className="text-sm text-slate-700 leading-relaxed font-semibold">{rec}</p>
             </li>
           ))}
         </ol>

@@ -5,7 +5,13 @@ from database import engine, Base
 from routes.analyze import router as analyze_router
 
 # Initialize database tables
-Base.metadata.create_all(bind=engine)
+try:
+    print("DEBUG: Creating database tables...")
+    Base.metadata.create_all(bind=engine)
+    print("DEBUG: Database tables created successfully.")
+except Exception as e:
+    print(f"CRITICAL: Database initialization failed: {e}")
+    # We continue so health checks can still run and we can see logs
 
 # Apply schema updates safely on startup
 _MIGRATIONS = [

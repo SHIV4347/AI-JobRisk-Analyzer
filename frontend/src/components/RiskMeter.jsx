@@ -49,7 +49,7 @@ export default function RiskMeter({ score, riskLevel }) {
         {/* Score label centered */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className={`text-4xl font-black leading-none ${colors.text}`}>{animScore}</span>
-          <span className="text-[11px] text-blue-200/40 font-bold mt-0.5">/ 100</span>
+          <span className="text-[11px] text-slate-400 font-bold mt-0.5">/ 100</span>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export default function RiskMeter({ score, riskLevel }) {
       <span className={colors.bg}>{riskLevel || colors.label}</span>
 
       {/* Subtle description */}
-      <p className="text-xs text-blue-200/60 text-center leading-relaxed max-w-[180px]">
+      <p className="text-xs text-slate-500 font-medium text-center leading-relaxed max-w-[180px]">
         {score >= 70
           ? 'High automation exposure detected'
           : score >= 40

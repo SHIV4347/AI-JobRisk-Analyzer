@@ -27,7 +27,7 @@ export default function TaskTable({ tasks }) {
     <div>
       {/* Header */}
       <div className="flex items-center gap-3 mb-5">
-        <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-slate-400">
+        <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
             <rect x="9" y="3" width="6" height="4" rx="1"/>
@@ -35,8 +35,8 @@ export default function TaskTable({ tasks }) {
           </svg>
         </div>
         <div>
-          <h2 className="text-base font-semibold text-slate-100">Task Analysis</h2>
-          <p className="text-xs text-slate-500">{tasks.length} task{tasks.length !== 1 ? 's' : ''} evaluated</p>
+          <h2 className="text-base font-bold text-slate-900">Task Analysis</h2>
+          <p className="text-xs text-slate-500 font-medium">{tasks.length} task{tasks.length !== 1 ? 's' : ''} evaluated</p>
         </div>
       </div>
 
@@ -44,12 +44,12 @@ export default function TaskTable({ tasks }) {
       <div className="overflow-x-auto -mx-6">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-white/[0.06]">
-              <th className="section-label pl-6 pb-3 text-left w-10">#</th>
-              <th className="section-label pb-3 text-left">Task</th>
-              <th className="section-label pb-3 text-left hidden sm:table-cell">Category</th>
-              <th className="section-label pb-3 text-left hidden md:table-cell">Replaceability</th>
-              <th className="section-label pb-3 pr-6 text-right">Risk</th>
+            <tr className="border-b border-slate-200">
+              <th className="pl-6 pb-3 text-left w-10 text-[10px] font-extrabold uppercase tracking-widest text-slate-500">#</th>
+              <th className="pb-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-slate-500">Task</th>
+              <th className="pb-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-slate-500 hidden sm:table-cell">Category</th>
+              <th className="pb-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-slate-500 hidden md:table-cell">Replaceability</th>
+              <th className="pb-3 pr-6 text-right text-[10px] font-extrabold uppercase tracking-widest text-slate-500">Risk</th>
             </tr>
           </thead>
           <tbody>
@@ -58,10 +58,10 @@ export default function TaskTable({ tasks }) {
               return (
                 <tr
                   key={i}
-                  className="border-b border-white/[0.04] last:border-0 hover:bg-white/[0.02] transition-colors duration-100 group"
+                  className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors duration-100 group"
                 >
-                  <td className="pl-6 py-3.5 text-slate-600 font-mono text-xs">{String(i + 1).padStart(2, '0')}</td>
-                  <td className="py-3.5 pr-4 text-slate-700 font-medium max-w-[240px] leading-snug">{t.task}</td>
+                  <td className="pl-6 py-3.5 text-slate-400 font-mono text-[11px] font-bold">{String(i + 1).padStart(2, '0')}</td>
+                  <td className="py-3.5 pr-4 text-slate-700 font-semibold max-w-[240px] leading-snug">{t.task}</td>
                   <td className="py-3.5 pr-4 hidden sm:table-cell">
                     <span className={getCategoryBadge(t.category)}>
                       {t.category.replace('_', ' ')}
@@ -74,13 +74,13 @@ export default function TaskTable({ tasks }) {
                   </td>
                   <td className="py-3.5 pr-6">
                     <div className="flex items-center gap-2.5 justify-end">
-                      <div className="w-16 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                      <div className="w-16 h-1.5 rounded-full bg-slate-100 overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all duration-700 ${scoreColors.bar}`}
                           style={{ width: `${t.risk_score}%` }}
                         />
                       </div>
-                      <span className={`text-xs font-semibold tabular-nums w-7 text-right ${scoreColors.text}`}>
+                      <span className={`text-xs font-bold tabular-nums w-7 text-right ${scoreColors.text}`}>
                         {t.risk_score}
                       </span>
                     </div>
